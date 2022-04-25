@@ -1,0 +1,164 @@
+local ScreenGui = Instance.new("ScreenGui")
+local GUI = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local On = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Off = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local UICorner_4 = Instance.new("UICorner")
+local Hide = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+
+GUI.Name = "GUI"
+GUI.Parent = ScreenGui
+GUI.BackgroundColor3 = Color3.fromRGB(255, 170, 127)
+GUI.BorderColor3 = Color3.fromRGB(0, 0, 0)
+GUI.Position = UDim2.new(0.392254859, 0, 0.0134970825, 0)
+GUI.Selectable = true
+GUI.Size = UDim2.new(0.205496565, 0, 0.0453987718, 0)
+
+TextLabel.Parent = GUI
+TextLabel.BackgroundColor3 = Color3.fromRGB(202, 134, 100)
+TextLabel.BorderColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Size = UDim2.new(0.243161097, 0, 1, 0)
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "ESP"
+TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+UICorner.Parent = TextLabel
+
+On.Name = "On"
+On.Parent = GUI
+On.BackgroundColor3 = Color3.fromRGB(63, 189, 92)
+On.Position = UDim2.new(0.273556232, 0, 0.0810810849, 0)
+On.Size = UDim2.new(0.249240115, 0, 0.810810804, 0)
+On.Font = Enum.Font.SourceSans
+On.Text = "On"
+On.TextColor3 = Color3.fromRGB(255, 255, 255)
+On.TextScaled = true
+On.TextSize = 14.000
+On.TextWrapped = true
+
+UICorner_2.Parent = On
+
+Off.Name = "Off"
+Off.Parent = GUI
+Off.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Off.Position = UDim2.new(0.547112525, 0, 0.0810810849, 0)
+Off.Size = UDim2.new(0.249240115, 0, 0.810810804, 0)
+Off.Font = Enum.Font.SourceSansBold
+Off.Text = "Off"
+Off.TextColor3 = Color3.fromRGB(255, 255, 255)
+Off.TextScaled = true
+Off.TextSize = 14.000
+Off.TextWrapped = true
+
+UICorner_3.Parent = Off
+
+UICorner_4.Parent = GUI
+
+Hide.Name = "Hide"
+Hide.Parent = ScreenGui
+Hide.BackgroundColor3 = Color3.fromRGB(85, 0, 0)
+Hide.BorderColor3 = Color3.fromRGB(85, 0, 0)
+Hide.Position = UDim2.new(0.560039401, 0, 0.0172773674, 0)
+Hide.Size = UDim2.new(0.033339709, 0, 0.0365776569, 0)
+Hide.Font = Enum.Font.SourceSansBold
+Hide.Text = "Hide"
+Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
+Hide.TextScaled = true
+Hide.TextSize = 14.000
+Hide.TextWrapped = true
+
+UICorner_5.Parent = Hide
+
+local ESP = Instance.new("BillboardGui")
+local NamAndDistance = Instance.new("TextLabel")
+
+
+ESP.Name = "ESP"
+ESP.Parent = game.Lighting
+ESP.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ESP.Active = true
+ESP.AlwaysOnTop = true
+ESP.ExtentsOffset = Vector3.new(0, 4, 0)
+ESP.LightInfluence = 1.000
+ESP.Size = UDim2.new(10, 0, 2, 0)
+
+NamAndDistance.Name = "NamAndDistance"
+NamAndDistance.Parent = ESP
+NamAndDistance.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
+NamAndDistance.Size = UDim2.new(1, 0, 1, 0)
+NamAndDistance.Font = Enum.Font.SourceSansBold
+NamAndDistance.TextColor3 = Color3.fromRGB(255, 0, 0)
+NamAndDistance.TextScaled = true
+NamAndDistance.TextSize = 14.000
+NamAndDistance.TextWrapped = true
+
+UICorner_4.Parent = Hide
+
+UICorner_5.Parent = GUI
+
+loop=1
+
+Hide.MouseButton1Down:connect(function()
+	if GUI.Visible == true then
+		GUI.Visible = false
+		Hide.Text = "Show"
+	else
+		if GUI.Visible == false then
+			GUI.Visible = true
+			Hide.Text = "Hide"
+
+		end
+	end
+end)
+
+On.MouseButton1Down:connect(function()
+	loop = 1
+	spawn(function()
+		while true do
+			wait(0.1)
+			for i,v in pairs(game.Players:GetChildren()) do
+				if game.Workspace:FindFirstChild(v.Name) then
+					if v.Name ~= game.Players.LocalPlayer.Name then
+						if loop==1 then
+if v.Character:FindFirstChild("Head") then
+							if v.Character.Head:FindFirstChild("ESP") then
+								v.Character.Head.ESP.NamAndDistance.Text = v.Name
+								wait(0.1)
+
+							else
+if v.Character:FindFirstChild("Head") then
+								if not v.Character.Head:FindFirstChild("ESP") then
+									
+										if loop == 1 then
+
+											local b = ESP:Clone()
+											b.Parent = v.Character.Head
+											v.Character.Head.ESP.NamAndDistance.Text = v.Name
+									
+
+								end
+							end end end end end end end end
+
+	Off.MouseButton1Down:connect(function()
+		loop=0
+		loop=0
+		while true do
+			wait(0.01)
+			for i,h in pairs(game.Players:GetChildren()) do
+				if loop==0 then
+if game.Players[h.Name].Character:FindFirstChild("Head") then
+					if game.Players[h.Name].Character.Head:FindFirstChild("ESP") then
+						game.Players[h.Name].Character.Head.ESP:Remove()
+					end end end end end end) end end) end)
