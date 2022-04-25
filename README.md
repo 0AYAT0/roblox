@@ -1,2 +1,0 @@
-# roblox
-scrip roblox
